@@ -64,7 +64,7 @@ const int SPECTATE_RAISE = 25;
 
 const int	HEALTH_PULSE		= 1000;			// Regen rate and heal leak rate (for health > 100)
 const int	ARMOR_PULSE			= 1000;			// armor ticking down due to being higher than maxarmor
-const int	AMMO_REGEN_PULSE	= 1000;			// ammo regen in Arena CTF
+const int	AMMO_REGEN_PULSE	= 500;			// ammo regen in Arena CTF
 const int	POWERUP_BLINKS		= 5;			// Number of times the powerup wear off sound plays
 const int	POWERUP_BLINK_TIME	= 1000;			// Time between powerup wear off sounds
 const float MIN_BOB_SPEED		= 5.0f;			// minimum speed to bob and play run/walk animations at
@@ -5010,7 +5010,7 @@ void idPlayer::UpdatePowerUps( void ) {
 	}
 
 	// Regenerate ammo
-	if( gameLocal.isServer && PowerUpActive( POWERUP_AMMOREGEN ) ) {
+	if( gameLocal.isServer /*&& PowerUpActive( POWERUP_AMMOREGEN )*/ ) {
 		for( int i = 0; i < MAX_WEAPONS; i++ ) {
 			if( inventory.weapons & ( 1 << i ) ) {
 				int ammoIndex	= inventory.AmmoIndexForWeaponIndex( i );
